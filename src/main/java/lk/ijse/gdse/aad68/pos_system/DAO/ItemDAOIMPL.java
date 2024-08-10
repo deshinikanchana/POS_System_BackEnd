@@ -21,8 +21,8 @@ public final class ItemDAOIMPL implements ItemDAO {
             var ps = connection.prepareStatement(SAVE_ITEM);
             ps.setString(1, item.getItemCode());
             ps.setString(2, item.getItemName());
-            ps.setString(3, item.getItemQty());
-            ps.setString(4, item.getItemPrice());
+            ps.setInt(3, item.getItemQty());
+            ps.setInt(4, item.getItemPrice());
             if(ps.executeUpdate() != 0){
                 return "Item Save Successfully";
             }else {
@@ -45,8 +45,8 @@ public final class ItemDAOIMPL implements ItemDAO {
         try {
             var ps = connection.prepareStatement(UPDATE_ITEM);
             ps.setString(1, item.getItemName());
-            ps.setString(2, item.getItemQty());
-            ps.setString(3, item.getItemPrice());
+            ps.setInt(2, item.getItemQty());
+            ps.setInt(3, item.getItemPrice());
             ps.setString(4, id);
             return ps.executeUpdate() != 0;
         }catch (SQLException e){
@@ -64,8 +64,8 @@ public final class ItemDAOIMPL implements ItemDAO {
             while (rst.next()){
                 itemDto.setItemCode(rst.getString(1));
                 itemDto.setItemName(rst.getString(2));
-                itemDto.setItemQty(rst.getString(3));
-                itemDto.setItemPrice(rst.getString(4));
+                itemDto.setItemQty(rst.getInt(3));
+                itemDto.setItemPrice(rst.getInt(4));
             }
             return itemDto;
         }catch (Exception e){
@@ -84,8 +84,8 @@ public final class ItemDAOIMPL implements ItemDAO {
             while (rst.next()) {
                 String code = rst.getString(1);
                 String name = rst.getString(2);
-                String qty = rst.getString(3);
-                String price = rst.getString(4);
+                int qty = rst.getInt(3);
+                int price = rst.getInt(4);
 
 
                 var Dto = new ItemDTO(code,name,qty,price);

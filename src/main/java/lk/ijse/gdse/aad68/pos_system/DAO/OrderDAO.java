@@ -7,5 +7,4 @@ import java.sql.Connection;
 public sealed interface OrderDAO permits OrderDAOIMPL {
     boolean saveOrder(OrderDTO order, Connection connection)throws Exception;
     OrderDTO getOrder(String id,Connection connection)throws Exception;
-    boolean updateOrder(String id,OrderDTO order,Connection connection)throws Exception;
 }

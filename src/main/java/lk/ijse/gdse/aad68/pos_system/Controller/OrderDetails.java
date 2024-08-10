@@ -81,23 +81,4 @@ public class OrderDetails extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try (var writer = resp.getWriter()) {
-            var orderId = req.getParameter("orderId");
-            var orderDetailsBoImpl = new OrderDetailsBOIMPL();
-            if(orderDetailsBoImpl.deleteOrderDetails(orderId,connection)){
-                logger.info(orderId + " Order Details Delete Successfully !");
-                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            }else {
-                logger.info( orderId +" Order Delete Failed !");
-                writer.write("Delete failed");
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            }
-        }catch (Exception e){
-            logger.error("Connection failed !");
-            e.printStackTrace();
-        }
-    }
 }

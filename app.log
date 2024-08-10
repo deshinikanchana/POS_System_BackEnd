@@ -1,0 +1,8 @@
+13:38:12:462 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Order Details init method Invoked !
+13:38:12:845 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Order Details Connection Initialized
+13:38:12:846 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Customer Init method Invoked
+13:38:12:865 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Customer Connection Initialized
+13:38:12:865 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Order init Method Invoked !
+13:38:12:883 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Order Connection Initialized !
+13:38:12:883 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Item init Method Invoked !
+13:38:12:900 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.a.p.Controller.Customer - Item Connection Initialized

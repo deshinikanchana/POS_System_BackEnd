@@ -12,6 +12,6 @@ import java.io.Serializable;
 public class ItemDTO implements Serializable {
     private String itemCode;
     private String itemName;
-    private String itemQty;
-    private String itemPrice;
+    private int itemQty;
+    private int itemPrice;
 }

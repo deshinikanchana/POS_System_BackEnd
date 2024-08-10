@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.gdse.aad68.pos_system.BO.OrderBOIMPL;
 import lk.ijse.gdse.aad68.pos_system.DTO.OrderDTO;
+import lk.ijse.gdse.aad68.pos_system.DTO.purchaseOrderDTO;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -65,12 +66,12 @@ public class Order extends HttpServlet {
         try (var writer = resp.getWriter()){
             Jsonb jsonb = JsonbBuilder.create();
             var orderBoImpl = new OrderBOIMPL();
-            OrderDTO order = jsonb.fromJson(req.getReader(), OrderDTO.class);
-            if(orderBoImpl.SaveOrder(order,connection)) {
-                logger.info("Order "+order.getOrderId()+" Saved Successfully !");
+             purchaseOrderDTO purch = jsonb.fromJson(req.getReader(), purchaseOrderDTO.class);
+            if(orderBoImpl.PurchaseOrder(purch,connection)) {
+                logger.info("Order "+purch.getOrderDto().getOrderId()+" Saved Successfully !");
                 writer.write("Order Saved Successfully");
             }else{
-                logger.info("Order "+order.getOrderId()+" Saving Failed !");
+                logger.info("Order "+purch.getOrderDto().getOrderId()+" Saving Failed !");
                 writer.write("Order Saving Process Failed");
             }
             resp.setStatus(HttpServletResponse.SC_CREATED);
@@ -78,27 +79,6 @@ public class Order extends HttpServlet {
         }catch (Exception e){
             logger.error("Connection failed !");
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try (var writer = resp.getWriter()) {
-            var orderBoImpl = new OrderBOIMPL();
-            var code = req.getParameter("orderId");
-            Jsonb jsonb = JsonbBuilder.create();
-            OrderDTO order = jsonb.fromJson(req.getReader(), OrderDTO.class);
-            if(orderBoImpl.updateOrder(code,order,connection)){
-                logger.info("Order "+code+" Update Successfully !");
-                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            }else {
-                logger.info("Order "+code+" Update Failed !");
-                writer.write("Order Update failed");
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            }
-        }catch (Exception e){
-            logger.error("Connection Failed !");
             e.printStackTrace();
         }
     }

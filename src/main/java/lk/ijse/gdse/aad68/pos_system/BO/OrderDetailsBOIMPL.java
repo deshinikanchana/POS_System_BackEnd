@@ -14,12 +14,6 @@ public class OrderDetailsBOIMPL implements OrderDetailsBO{
     }
 
     @Override
-    public boolean deleteOrderDetails(String id, Connection connection) throws Exception {
-        var orderDetailsDaoImpl = new OrderDetailsDAOIMPL();
-        return orderDetailsDaoImpl.deleteOrderDetails(id,connection);
-    }
-
-    @Override
     public List<OrderDetailsDTO> getOrderDetails(String id, Connection connection) throws Exception {
         var orderDetailsDaoImpl = new OrderDetailsDAOIMPL();
         return orderDetailsDaoImpl.getOrderDetails(id,connection);

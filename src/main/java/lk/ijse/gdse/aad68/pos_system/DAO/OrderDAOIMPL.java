@@ -10,8 +10,6 @@ public final class OrderDAOIMPL implements OrderDAO{
     public static String SAVE_ORDER = "INSERT INTO orders (orderId,cusId,orderDate,orderTotal,discount,subTotal,cash,balance) VALUES(?,?,?,?,?,?,?,?)";
 
     public static String GET_ORDER = "SELECT * FROM orders WHERE orderId=?";
-    public static String UPDATE_ORDER = "UPDATE orders SET orderTotal =?,discount =?,subTotal=?,cash=?,balance=?  WHERE orderId =?";
-
     @Override
     public boolean saveOrder(OrderDTO order, Connection connection) throws Exception {
         boolean passed = false;
@@ -61,22 +59,4 @@ public final class OrderDAOIMPL implements OrderDAO{
             throw new SQLException(e.getMessage());
         }
     }
-
-    @Override
-    public boolean updateOrder(String id, OrderDTO order, Connection connection) throws Exception {
-        try {
-            var ps = connection.prepareStatement(UPDATE_ORDER);
-            ps.setInt(1, order.getOrderTotal());
-            ps.setInt(2, order.getDiscount());
-            ps.setInt(3, order.getSubTotal());
-            ps.setInt(4, order.getCash());
-            ps.setInt(5, order.getBalance());
-            ps.setString(6, id);
-
-            return ps.executeUpdate() != 0;
-        }catch (SQLException e){
-            throw new SQLException(e.getMessage());
-        }
-    }
-
 }

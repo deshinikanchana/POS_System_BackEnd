@@ -33,13 +33,6 @@ public final class OrderDetailsDAOIMPL implements OrderDetailsDAO{
     }
 
     @Override
-    public boolean deleteOrderDetails(String id, Connection connection) throws Exception {
-        var ps = connection.prepareStatement(DELETE_ORDER_DETAILS);
-        ps.setString(1, id);
-        return ps.executeUpdate() != 0;
-    }
-
-    @Override
     public List<OrderDetailsDTO> getOrderDetails(String id, Connection connection) throws Exception {
         try {
             var ps = connection.prepareStatement(GET_ORDER_DETAILS);

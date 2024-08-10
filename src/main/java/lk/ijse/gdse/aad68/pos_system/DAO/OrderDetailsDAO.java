@@ -7,6 +7,5 @@ import java.util.List;
 
 public sealed interface OrderDetailsDAO permits OrderDetailsDAOIMPL {
     boolean saveOrderDetails(OrderDetailsDTO orderDetails, Connection connection)throws Exception;
-    boolean deleteOrderDetails(String id, Connection connection)throws Exception;
     List<OrderDetailsDTO> getOrderDetails(String id,Connection connection)throws Exception;
 }
